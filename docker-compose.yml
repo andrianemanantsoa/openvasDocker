@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  openvas:
+    image: mikesplain/openvas:latest
+    container_name: openvas
+    restart: always
+    environment:
+      - OV_PASSWORD=admin
+      # Nom d’hôte public pour les certificats et l’accès
+      - PUBLIC_HOSTNAME=openvas.local
+    ports:
+      # Port HTTPS pour l’interface web (Greenbone Security Assistant)
+      - "443:443"
+      # Port pour l’OpenVAS Manager (scanner backend)
+      - "9390:9390"
+    volumes:
+      # Données persistantes (NVTs, configurations, etc.)
+      - ./openvas/data:/var/lib/openvas/mgr/
+    networks:
+      - openvas-network
+
+networks:
+  openvas-network:
+    driver: bridge
