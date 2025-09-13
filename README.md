@@ -11,7 +11,7 @@ Déploiement simple d'OpenVAS (Greenbone Vulnerability Scanner) via Docker Compo
 1. Cloner ce dépôt
 2. Lancer les services
    ```bash
-   docker compose up -d
+   docker-compose up -d
    ```
 3. Accéder à l’interface Web GSA
    - URL: https://localhost/
@@ -40,20 +40,20 @@ Le fichier `docker-compose.yml` lance un seul service `openvas` basé sur l’im
 - Pour un hostname public différent, mettez à jour `PUBLIC_HOSTNAME`.
 
 ## 📦 Commandes utiles
-- Démarrer: `docker compose up -d`
-- Logs: `docker compose logs -f openvas`
-- Arrêter: `docker compose down`
-- Redémarrer: `docker compose restart openvas`
+- Démarrer: `docker-compose up -d`
+- Logs: `docker-compose logs -f openvas`
+- Arrêter: `docker-compose down`
+- Redémarrer: `docker-compose restart openvas`
 - Mettre à jour l’image:
   ```bash
-  docker compose pull
-  docker compose up -d --force-recreate
+  docker-compose pull
+  docker-compose up -d --force-recreate
   ```
 
 ## 💾 Sauvegarde et restauration
 Les données persistantes sont stockées dans `openvas/data`.
 - Sauvegarde: archivez ce dossier (hors conteneur éteint de préférence)
-- Restauration: replacez le dossier puis relancez `docker compose up -d`
+- Restauration: replacez le dossier puis relancez `docker-compose up -d`
 
 ## 🧪 Tests basiques
 Après connexion à GSA:
